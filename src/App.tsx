@@ -18,80 +18,81 @@ import ChangePassword from './Pages/ChangePassword/ChangePassword';
 
 const query = new QueryClient();
 
-const routers = createBrowserRouter([
-  {
-    path: '',
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: (
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'home',
-        element: (
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'login',
-        element: (
-          <ProtectedAuth>
-            <Login />
-          </ProtectedAuth>
-        ),
-      },
-      {
-        path: 'register',
-        element: (
-          <ProtectedAuth>
-            <Register />
-          </ProtectedAuth>
-        ),
-      },
-      {
-        path: 'change-password',
-        element: (
-          <ProtectedRoute>
-            <ChangePassword />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'postdetails/:id',
-        element: (
-          <ProtectedRoute>
-            <PostDetails />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'Profile',
-        element: (
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        ),
-      },
-      { path: '*', element: <Notfound /> },
-    ],
-  },
-  
+const routers = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'home',
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'login',
+          element: (
+            <ProtectedAuth>
+              <Login />
+            </ProtectedAuth>
+          ),
+        },
+        {
+          path: 'register',
+          element: (
+            <ProtectedAuth>
+              <Register />
+            </ProtectedAuth>
+          ),
+        },
+        {
+          path: 'change-password',
+          element: (
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'postdetails/:id',
+          element: (
+            <ProtectedRoute>
+              <PostDetails />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'Profile',
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: '*',
+          element: <Notfound />,
+        },
+      ],
+    },
+  ],
   {
     basename: '/social-app',
-  },
+  }
 );
-]);
 
 function App() {
-  // detect offline
-
   const { online } = useNetworkState();
 
   return (
@@ -100,7 +101,7 @@ function App() {
       <QueryClientProvider client={query}>
         <AuthContextProvider>
           <Toaster />
-          <RouterProvider router={routers}></RouterProvider>
+          <RouterProvider router={routers} />
         </AuthContextProvider>
       </QueryClientProvider>
     </>
