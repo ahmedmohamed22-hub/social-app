@@ -82,6 +82,11 @@ const routers = createBrowserRouter([
       { path: '*', element: <Notfound /> },
     ],
   },
+  
+  {
+    basename: '/social-app',
+  },
+);
 ]);
 
 function App() {
